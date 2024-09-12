@@ -4,15 +4,7 @@
   </div>
 </template>
 
-<script setup>
-const props = defineProps({
-  modelValue: {
-    type: Number,
-    default: 0,
-  },
-})
-const emit = defineEmits(['update:model-value'])
-</script>
+<script setup></script>
 
 <style scoped>
 .tab-bar {
