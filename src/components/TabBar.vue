@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { provide } from 'vue'
+import { provide, ref } from 'vue'
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -13,7 +13,16 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:model-value'])
-provide('modelValue', props.modelValue)
+provide('TabBar', {
+  children: ref([]),
+  registerChild(child) {
+    if (child) this.children.value.push(child)
+  },
+  props, // 将来自根组件的prop,如modelValue提供给tabItem
+  setCurrent(index) {
+    emit('update:model-value', index)
+  },
+})
 </script>
 
 <style scoped>

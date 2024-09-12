@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-bar-item">
+  <div class="tab-bar-item" :class="activeStyle" @click="handleClick">
     <i :class="iconStyle"></i>
     <!-- <i :class="iconStyle(icon)"></i> -->
     <slot></slot>
@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { computed, inject } from 'vue'
+import { computed, inject, getCurrentInstance } from 'vue'
 const props = defineProps({
   icon: {
     type: String,
@@ -19,7 +19,18 @@ const iconStyle = computed(() => `iconfont icon-${props.icon}`)
 //   return icon => `iconfont icon-${icon}`
 // })
 
-const modelValue = inject('modelValue')
+// 注入来自tabbat的provide
+const parent = inject('TabBar')
+// 获取当前tabItem实例
+const instance = getCurrentInstance()
+// 将instance添加到parent的children数组中
+parent.registerChild(instance)
+// 计算当前实例的索引
+const index = parent.children.value.indexOf(instance)
+// 计算class属性
+const activeStyle = computed(() => (index == parent.props.modelValue ? 'current' : ''))
+// 点击时修改modelValue
+const handleClick = () => parent.setCurrent(index)
 </script>
 
 <style scoped>

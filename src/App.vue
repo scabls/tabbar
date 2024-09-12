@@ -1,4 +1,5 @@
 <template>
+  <!-- <TabBar :modelValue="active" @update:model-value="handleUpdate"> -->
   <TabBar v-model="active">
     <TabBarItem icon="home">首页</TabBarItem>
     <TabBarItem icon="category">分类</TabBarItem>
