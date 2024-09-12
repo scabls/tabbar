@@ -5,7 +5,8 @@
 </template>
 
 <script setup>
-import { provide, ref } from 'vue'
+import useChildren from '../hooks/useChildren'
+const { linkChildren } = useChildren('TabBar')
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -13,15 +14,10 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:model-value'])
-const children = ref([])
-const registerChild = child => {
-  if (child) children.value.push(child)
-}
 const setCurrent = index => emit('update:model-value', index)
-provide('TabBar', {
-  children,
-  registerChild,
-  props, // 将来自根组件的prop,如modelValue提供给tabItem
+// 将props和setCurrent传给子组件
+linkChildren({
+  props,
   setCurrent,
 })
 </script>

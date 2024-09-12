@@ -7,7 +7,9 @@
 </template>
 
 <script setup>
-import { computed, inject, getCurrentInstance } from 'vue'
+import { computed } from 'vue'
+import useParent from '../hooks/useParent'
+const { parent, index } = useParent('TabBar')
 const props = defineProps({
   icon: {
     type: String,
@@ -15,22 +17,10 @@ const props = defineProps({
   },
 })
 const iconStyle = computed(() => `iconfont icon-${props.icon}`)
-// const iconStyle = computed(() => {
-//   return icon => `iconfont icon-${icon}`
-// })
-
-// 注入来自tabbat的provide
-const parent = inject('TabBar')
-// 获取当前tabItem实例
-const instance = getCurrentInstance()
-// 将instance添加到parent的children数组中
-parent.registerChild(instance)
-// 计算当前实例的索引
-const index = parent.children.value.indexOf(instance)
 // 计算class属性
-const activeStyle = computed(() => (index == parent.props.modelValue ? 'current' : ''))
+const activeStyle = computed(() => (index.value == parent.props.modelValue ? 'current' : ''))
 // 点击时修改modelValue
-const handleClick = () => parent.setCurrent(index)
+const handleClick = () => parent.setCurrent(index.value)
 </script>
 
 <style scoped>
