@@ -28,7 +28,6 @@ parent.registerChild(instance)
 // 计算当前实例的索引
 // 使用计算属性, 可以在组件调整时动态更新索引
 const index = computed(() => parent.children.indexOf(instance))
-console.log(index.value)
 // 计算class属性
 const activeStyle = computed(() => (index.value == parent.props.modelValue ? 'current' : ''))
 // 点击时修改modelValue
