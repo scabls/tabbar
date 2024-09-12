@@ -23,7 +23,7 @@ const emit = defineEmits(['update:model-value'])
   justify-content: space-around;
   width: 100%;
   height: 50px;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
 }
 </style>

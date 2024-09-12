@@ -1,17 +1,18 @@
 <template>
   <TabBar v-model="active">
-    <TabBarItem icon="home">首页</TabBarItem>
-    <TabBarItem icon="category">分类</TabBarItem>
-    <TabBarItem icon="cart">购物车</TabBarItem>
-    <TabBarItem icon="user">我的</TabBarItem>
+    <TabBarItem icon="home" :id="0">首页</TabBarItem>
+    <TabBarItem icon="category" :id="1">分类</TabBarItem>
+    <TabBarItem icon="cart" :id="2">购物车</TabBarItem>
+    <TabBarItem icon="user" :id="3">我的</TabBarItem>
   </TabBar>
 </template>
 
 <script setup>
 import TabBar from './components/TabBar.vue'
 import TabBarItem from './components/TabBarItem.vue'
-import { ref } from 'vue'
+import { ref, provide } from 'vue'
 const active = ref(0)
+provide('active', active)
 </script>
 
 <style>
