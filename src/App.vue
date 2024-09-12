@@ -1,6 +1,9 @@
 <template>
   <!-- 动态组件, 由is属性决定渲染哪个组件 -->
-  <component :is="views[active]"></component>
+  <keep-alive :include="['HomeView']">
+    <component :is="views[active]"></component>
+  </keep-alive>
+
   <!-- <TabBar :modelValue="active" @update:model-value="handleUpdate"> -->
   <TabBar v-model="active">
     <TabBarItem icon="home">首页</TabBarItem>
