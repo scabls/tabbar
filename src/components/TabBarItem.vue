@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 const props = defineProps({
   icon: {
     type: String,
@@ -18,6 +18,8 @@ const iconStyle = computed(() => `iconfont icon-${props.icon}`)
 // const iconStyle = computed(() => {
 //   return icon => `iconfont icon-${icon}`
 // })
+
+const modelValue = inject('modelValue')
 </script>
 
 <style scoped>
@@ -33,10 +35,13 @@ const iconStyle = computed(() => `iconfont icon-${props.icon}`)
   /* display: grid;
   text-align: center;
   align-content: center; */
-  color: #fff;
+  color: #666;
   font-size: 12px;
 }
 .tab-bar-item i {
   font-size: 18px;
+}
+.tab-bar-item.current {
+  color: red;
 }
 </style>
