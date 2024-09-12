@@ -13,15 +13,16 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:model-value'])
+const children = ref([])
+const registerChild = child => {
+  if (child) children.value.push(child)
+}
+const setCurrent = index => emit('update:model-value', index)
 provide('TabBar', {
-  children: ref([]),
-  registerChild(child) {
-    if (child) this.children.value.push(child)
-  },
+  children,
+  registerChild,
   props, // 将来自根组件的prop,如modelValue提供给tabItem
-  setCurrent(index) {
-    emit('update:model-value', index)
-  },
+  setCurrent,
 })
 </script>
 
