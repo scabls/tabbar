@@ -9,7 +9,6 @@ import useChildren from '../hooks/useChildren'
 const { linkChildren } = useChildren('TabBar')
 
 const model = defineModel()
-console.log(model)
 
 const setCurrent = index => (model.value = index)
 // 将model和setCurrent传给子组件
