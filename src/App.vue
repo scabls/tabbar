@@ -1,5 +1,5 @@
 <template>
-  <TabBar>
+  <TabBar v-model="active">
     <TabBarItem icon="home">首页</TabBarItem>
     <TabBarItem icon="category">分类</TabBarItem>
     <TabBarItem icon="cart">购物车</TabBarItem>
@@ -10,6 +10,8 @@
 <script setup>
 import TabBar from './components/TabBar.vue'
 import TabBarItem from './components/TabBarItem.vue'
+import { ref } from 'vue'
+const active = ref(0)
 </script>
 
 <style>

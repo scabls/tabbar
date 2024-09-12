@@ -1,6 +1,7 @@
 <template>
   <div class="tab-bar-item">
     <i :class="iconStyle"></i>
+    <!-- <i :class="iconStyle(icon)"></i> -->
     <slot></slot>
   </div>
 </template>
@@ -14,6 +15,9 @@ const props = defineProps({
   },
 })
 const iconStyle = computed(() => `iconfont icon-${props.icon}`)
+// const iconStyle = computed(() => {
+//   return icon => `iconfont icon-${icon}`
+// })
 </script>
 
 <style scoped>
