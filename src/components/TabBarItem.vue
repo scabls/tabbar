@@ -18,7 +18,7 @@ const props = defineProps({
 })
 const iconStyle = computed(() => `iconfont icon-${props.icon}`)
 // 计算class属性
-const activeStyle = computed(() => (index.value == parent.props.modelValue ? 'current' : ''))
+const activeStyle = computed(() => (index.value == parent.model.value ? 'current' : ''))
 // 点击时修改modelValue
 const handleClick = () => parent.setCurrent(index.value)
 </script>

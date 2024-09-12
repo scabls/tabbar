@@ -7,17 +7,14 @@
 <script setup>
 import useChildren from '../hooks/useChildren'
 const { linkChildren } = useChildren('TabBar')
-const props = defineProps({
-  modelValue: {
-    type: Number,
-    default: 0,
-  },
-})
-const emit = defineEmits(['update:model-value'])
-const setCurrent = index => emit('update:model-value', index)
-// 将props和setCurrent传给子组件
+
+const model = defineModel()
+console.log(model)
+
+const setCurrent = index => (model.value = index)
+// 将model和setCurrent传给子组件
 linkChildren({
-  props,
+  model,
   setCurrent,
 })
 </script>
