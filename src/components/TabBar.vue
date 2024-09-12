@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { provide, ref } from 'vue'
+import { provide, reactive } from 'vue'
 const props = defineProps({
   modelValue: {
     type: Number,
@@ -13,9 +13,10 @@ const props = defineProps({
   },
 })
 const emit = defineEmits(['update:model-value'])
-const children = ref([])
+// reactive接受对象,但不单纯是Object,更准确是引用类型
+const children = reactive([])
 const registerChild = child => {
-  if (child) children.value.push(child)
+  if (child) children.push(child)
 }
 const setCurrent = index => emit('update:model-value', index)
 provide('TabBar', {
