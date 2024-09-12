@@ -1,4 +1,6 @@
 <template>
+  <!-- 动态组件, 由is属性决定渲染哪个组件 -->
+  <component :is="views[active]"></component>
   <!-- <TabBar :modelValue="active" @update:model-value="handleUpdate"> -->
   <TabBar v-model="active">
     <TabBarItem icon="home">首页</TabBarItem>
@@ -11,8 +13,13 @@
 <script setup>
 import TabBar from './components/TabBar.vue'
 import TabBarItem from './components/TabBarItem.vue'
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 const active = ref(0)
+import HomeView from './views/HomeView.vue'
+import CateView from './views/CateView.vue'
+import CartView from './views/CartView.vue'
+import UserView from './views/UserView.vue'
+const views = shallowRef([HomeView, CateView, CartView, UserView])
 </script>
 
 <style>
